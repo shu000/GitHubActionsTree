@@ -1,0 +1,17 @@
+{
+    "name": "GitHub Actions Tree",
+    "description": "Display GitHub Actions Workflows as trees. Split by `/`.",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "index.js"
+    },
+    "permissions": [
+        "tabs",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://github.com/**/actions/",
+        "https://github.com/**/acitons/**/*"
+    ]
+  }
