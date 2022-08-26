@@ -1,8 +1,13 @@
 {
     "name": "GitHub Actions Tree",
-    "description": "Display GitHub Actions Workflows as trees. Split by `/`.",
-    "version": "1.0.0",
+    "description": "Display GitHub Actions Workflows as trees.",
+    "version": "1.0.1",
     "manifest_version": 3,
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
     "background": {
         "service_worker": "index.js"
     },
@@ -14,4 +19,4 @@
         "https://github.com/**/actions/",
         "https://github.com/**/acitons/**/*"
     ]
-  }
+}

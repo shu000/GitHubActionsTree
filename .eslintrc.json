@@ -9,9 +9,13 @@
       "plugin:@typescript-eslint/recommended",
       "prettier"
     ],
+    "rules": {
+      "@typescript-eslint/no-empty-interface": "off"
+    },
     "ignorePatterns": [
       "node_modules",
       "dist",
-      "webpack.config.js"
+      "webpack.config.js",
+      "jest.config.js"
     ]
 }

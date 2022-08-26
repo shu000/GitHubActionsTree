@@ -7,4 +7,4 @@ export const configs = {
     indentWidth: 16,
     // ディレクトリ判定基準とするセパレーター文字
     separator: "/",
-};
+} as const;
