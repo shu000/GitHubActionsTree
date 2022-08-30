@@ -2,9 +2,12 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     mode: "production",
-    entry: "./src/main.ts",
+    entry: {
+        index: "./src/index.ts",
+        main: "./src/app/main.ts",
+    },
     output: {
-        filename: "main.js",
+        filename: "[name].js",
     },
     module: {
         rules: [
@@ -16,7 +19,7 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: "manifest.json" }, { from: "index.js" }],
+            patterns: [{ from: "manifest.json" }, { from: "./icons/*" }],
         }),
     ],
     resolve: {
