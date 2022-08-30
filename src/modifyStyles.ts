@@ -2,6 +2,11 @@ import { configs } from "./config";
 import { createDirectoryElement } from "./elements";
 import { ParseResult } from "./parseFilterItemText";
 
+type Tree = Record<string, Branch>;
+interface Branch extends Tree {}
+
+const tree: Tree = {}; // destructive...
+
 const modifyStyle = (target: HTMLElement, parseResult: ParseResult) => {
     const parent = target.parentNode;
     const svg = target.children[0];
@@ -10,9 +15,18 @@ const modifyStyle = (target: HTMLElement, parseResult: ParseResult) => {
         return;
     }
 
+    let memo = tree;
     parseResult.directoryNames.map((name, i) => {
+        if (memo[name]) {
+            memo = memo[name];
+            return;
+        }
+
         const paddingLeft = `${configs.baseIndentWidth + configs.indentWidth * i}px`;
         parent.insertBefore(createDirectoryElement(name, paddingLeft), target);
+
+        memo[name] = {};
+        memo = memo[name];
     });
 
     target.innerHTML = "";

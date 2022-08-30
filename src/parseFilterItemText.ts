@@ -1,8 +1,5 @@
 import { trim } from "./util";
 
-// type AppearedDirectoryName = Record<string, ChildRecord>;
-// interface ChildRecord extends AppearedDirectoryName {}
-
 export type ParseResult = {
     indentDepth: number;
     directoryNames: string[];

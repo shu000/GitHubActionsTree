@@ -28,9 +28,6 @@ const main = () => {
         // modify styles of .filter-item
         const workflowNames = elements.map((elem) => elem.textContent?.trim() ?? "");
         const parseResults = parseWorkflowNames(workflowNames, configs.separator);
-        console.log("oioioioi");
-        console.log(workflowNames);
-        console.log(parseResults);
         modifyStyles(elements, parseResults);
 
         const cache = document.createElement("div");
