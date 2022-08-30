@@ -1,6 +1,6 @@
 import { configs } from "./config";
 import { createDirectoryElement } from "./elements";
-import { ParseResult } from "./parseFilterItemText";
+import { ParseResult } from "./types";
 
 type Tree = Record<string, Branch>;
 interface Branch extends Tree {}

@@ -1,12 +1,7 @@
+import { ParseResult } from "./types";
 import { trim } from "./util";
 
-export type ParseResult = {
-    indentDepth: number;
-    directoryNames: string[];
-    workflowName: string;
-};
-
-const defaultParseResult = {
+const defaultParseResult: ParseResult = {
     indentDepth: 0,
     directoryNames: [],
     workflowName: "",

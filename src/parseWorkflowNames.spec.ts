@@ -1,4 +1,5 @@
-import { ParseResult, parseWorkflowNames } from "./parseFilterItemText";
+import { parseWorkflowNames } from "./parseWorkflowNames";
+import { ParseResult } from "./types";
 
 const SEPARATOR = "/";
 
