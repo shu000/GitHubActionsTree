@@ -1,3 +1,5 @@
+import { Constants } from "./constants";
+
 const createFolderIconElement = (): SVGElement => {
     const folderIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     folderIcon.innerHTML = `
@@ -13,7 +15,7 @@ const createFolderIconElement = (): SVGElement => {
 
 export const createDirectoryElement = (text: string, paddingLeft: CSSStyleDeclaration["paddingLeft"]): HTMLElement => {
     const div = document.createElement("div");
-    div.className = "ghatree-dir";
+    div.className = Constants.DirElementClassName;
     div.style.display = "flex";
     div.style.padding = `8px 16px 0 ${paddingLeft}`;
     div.style.fontSize = "14px";

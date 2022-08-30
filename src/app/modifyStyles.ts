@@ -1,13 +1,17 @@
-import { configs } from "./config";
 import { createDirectoryElement } from "./elements";
 import { ParseResult } from "./types";
 
 type Tree = Record<string, Branch>;
 interface Branch extends Tree {}
 
+type ModifyOptions = {
+    baseIndentWidth: number;
+    indentWidth: number;
+};
+
 const tree: Tree = {}; // destructive...
 
-const modifyStyle = (target: HTMLElement, parseResult: ParseResult): void => {
+const modifyStyle = (target: HTMLElement, parseResult: ParseResult, options: ModifyOptions): void => {
     const parent = target.parentNode;
     const svg = target.children[0];
 
@@ -22,7 +26,7 @@ const modifyStyle = (target: HTMLElement, parseResult: ParseResult): void => {
             return;
         }
 
-        const paddingLeft = `${configs.baseIndentWidth + configs.indentWidth * i}px`;
+        const paddingLeft = `${options.baseIndentWidth + options.indentWidth * i}px`;
         parent.insertBefore(createDirectoryElement(name, paddingLeft), target);
 
         memo[name] = {};
@@ -34,15 +38,19 @@ const modifyStyle = (target: HTMLElement, parseResult: ParseResult): void => {
         target.appendChild(svg);
     }
     target.appendChild(document.createTextNode(parseResult.workflowName));
-    target.style.paddingLeft = `${configs.baseIndentWidth + configs.indentWidth * parseResult.indentDepth}px`;
+    target.style.paddingLeft = `${options.baseIndentWidth + options.indentWidth * parseResult.indentDepth}px`;
 };
 
-export const modifyStyles = (elements: HTMLElement[], parseResults: ParseResult[]): void => {
+export const modifyStyles = (
+    elements: HTMLElement[],
+    parseResults: ParseResult[],
+    options: ModifyOptions = { baseIndentWidth: 16, indentWidth: 16 },
+): void => {
     if (elements.length !== parseResults.length) {
         return;
     }
 
     elements.map((element, i) => {
-        modifyStyle(element, parseResults[i]);
+        modifyStyle(element, parseResults[i], options);
     });
 };

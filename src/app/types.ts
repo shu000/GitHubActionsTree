@@ -3,3 +3,9 @@ export type ParseResult = {
     directoryNames: string[];
     workflowName: string;
 };
+
+export type Configs = {
+    sidebarWidth: number;
+    indentWidth: number;
+    separator: string;
+};
