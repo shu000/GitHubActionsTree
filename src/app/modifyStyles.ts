@@ -7,7 +7,7 @@ interface Branch extends Tree {}
 
 const tree: Tree = {}; // destructive...
 
-const modifyStyle = (target: HTMLElement, parseResult: ParseResult) => {
+const modifyStyle = (target: HTMLElement, parseResult: ParseResult): void => {
     const parent = target.parentNode;
     const svg = target.children[0];
 
@@ -37,7 +37,7 @@ const modifyStyle = (target: HTMLElement, parseResult: ParseResult) => {
     target.style.paddingLeft = `${configs.baseIndentWidth + configs.indentWidth * parseResult.indentDepth}px`;
 };
 
-export const modifyStyles = (elements: HTMLElement[], parseResults: ParseResult[]) => {
+export const modifyStyles = (elements: HTMLElement[], parseResults: ParseResult[]): void => {
     if (elements.length !== parseResults.length) {
         return;
     }

@@ -12,14 +12,14 @@ const isAlreadyModified = (): boolean => {
     return false;
 };
 
-const expandSideBar = () => {
+const expandSideBar = (): void => {
     const sidebar = document.querySelector<HTMLElement>(".Layout-sidebar");
     if (sidebar) {
         sidebar.style.width = `${configs.sidebarWidth}px`;
     }
 };
 
-const main = () => {
+const main = (): void => {
     try {
         if (isAlreadyModified()) {
             return;

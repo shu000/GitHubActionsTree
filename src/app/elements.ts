@@ -11,7 +11,7 @@ const createFolderIconElement = (): SVGElement => {
     return folderIcon;
 };
 
-export const createDirectoryElement = (text: string, paddingLeft: CSSStyleDeclaration["paddingLeft"]) => {
+export const createDirectoryElement = (text: string, paddingLeft: CSSStyleDeclaration["paddingLeft"]): HTMLElement => {
     const div = document.createElement("div");
     div.className = "ghatree-dir";
     div.style.display = "flex";

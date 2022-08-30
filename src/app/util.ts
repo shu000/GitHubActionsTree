@@ -1,6 +1,6 @@
 const RegExpSpecialChars = ".^$*+-?()[]{}|—/\\";
 
-export const trim = (target: string, trimChar: string) => {
+export const trim = (target: string, trimChar: string): string => {
     if (trimChar.length !== 1) {
         return target;
     }
