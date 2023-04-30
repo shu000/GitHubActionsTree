@@ -13,26 +13,17 @@ const isAlreadyModified = (): boolean => {
     return false;
 };
 
-const expandSideBar = (sidebarWidth: number): void => {
-    const sidebar = document.querySelector<HTMLElement>(".Layout-sidebar");
-    if (sidebar) {
-        sidebar.style.width = `${sidebarWidth}px`;
-    }
-};
-
 const main = (): void => {
     try {
         if (isAlreadyModified()) {
             return;
         }
 
-        const { sidebarWidth, indentWidth, separator } = Config.get();
+        const { indentWidth, separator } = Config.get();
         const modifyOptions = {
             baseIndentWidth: Constants.BaseIndentWidth,
             indentWidth,
         };
-
-        expandSideBar(sidebarWidth);
 
         const cache = new PageCache();
         const elements = Array.from(document.querySelectorAll<HTMLElement>(".filter-item"));

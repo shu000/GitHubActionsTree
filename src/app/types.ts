@@ -5,7 +5,6 @@ export type ParseResult = {
 };
 
 export type Configs = {
-    sidebarWidth: number;
     indentWidth: number;
     separator: string;
 };
