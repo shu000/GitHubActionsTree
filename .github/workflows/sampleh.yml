@@ -1,0 +1,9 @@
+name: Child/h
+
+on: workflow_dispatch
+
+jobs:
+    sample:
+        steps:
+            - name: Sample
+              run: echo "It's a sample job."
