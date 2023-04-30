@@ -1,3 +1,4 @@
+import { ActionItems } from "./actionItems";
 import { PageCache } from "./cache";
 import { Config } from "./config";
 import { Constants } from "./constants";
@@ -15,6 +16,8 @@ const isAlreadyModified = (): boolean => {
 
 const main = (): void => {
     try {
+        console.log("hi");
+
         if (isAlreadyModified()) {
             return;
         }
@@ -25,20 +28,23 @@ const main = (): void => {
             indentWidth,
         };
 
-        const cache = new PageCache();
-        const elements = Array.from(document.querySelectorAll<HTMLElement>(".filter-item"));
+        // const cache = new PageCache();
+        const actionListItem = new ActionItems(document);
 
+        /*
         const cachedParseResults = cache.get("parseResults");
         if (cachedParseResults) {
             modifyStyles(elements, JSON.parse(cachedParseResults), modifyOptions);
             return;
         }
+        */
 
-        const workflowNames = elements.map((elem) => elem.textContent?.trim() ?? "");
+        const elements = actionListItem.getElements();
+        const workflowNames = actionListItem.getWorkflowNames();
         const parseResults = parseWorkflowNames(workflowNames, separator);
         modifyStyles(elements, parseResults, modifyOptions);
 
-        cache.save("parseResults", JSON.stringify(parseResults));
+        // cache.save("parseResults", JSON.stringify(parseResults));
     } catch (e) {
         if (e instanceof Error) {
             console.error(e.message);

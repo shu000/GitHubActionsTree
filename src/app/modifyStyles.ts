@@ -13,7 +13,7 @@ const tree: Tree = {}; // destructive...
 
 const modifyStyle = (target: HTMLElement, parseResult: ParseResult, options: ModifyOptions): void => {
     const parent = target.parentNode;
-    const svg = target.children[0];
+    const a = target.children[0];
 
     if (!parent) {
         return;
@@ -34,10 +34,7 @@ const modifyStyle = (target: HTMLElement, parseResult: ParseResult, options: Mod
     });
 
     target.innerHTML = "";
-    if (svg) {
-        target.appendChild(svg);
-    }
-    target.appendChild(document.createTextNode(parseResult.workflowName));
+    target.appendChild(a);
     target.style.paddingLeft = `${options.baseIndentWidth + options.indentWidth * parseResult.indentDepth}px`;
 };
 
@@ -46,11 +43,7 @@ export const modifyStyles = (
     parseResults: ParseResult[],
     options: ModifyOptions = { baseIndentWidth: 16, indentWidth: 16 },
 ): void => {
-    if (elements.length !== parseResults.length) {
-        return;
-    }
-
-    elements.map((element, i) => {
-        modifyStyle(element, parseResults[i], options);
+    parseResults.map((parsed, i) => {
+        modifyStyle(elements[i], parsed, options);
     });
 };
